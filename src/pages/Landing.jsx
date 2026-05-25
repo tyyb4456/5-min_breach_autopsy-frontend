@@ -26,8 +26,8 @@ const metrics = [
 ]
 
 const stack = [
-  { label: 'ORCHESTRATION', name: 'LANGGRAPH' },
-  { label: 'INTELLIGENCE', name: 'GEMINI 2.5 PRO' },
+  { label: 'ORCHESTRATION', name: 'OpenCLAW' },
+  { label: 'INTELLIGENCE', name: 'qwen-3-235b-a22b-instruct-2507' },
   { label: 'PROTOCOL', name: 'MCP SERVERS' },
   { label: 'FORENSICS', name: 'SIFT WORKSTATION' },
 ]
@@ -94,7 +94,7 @@ export default function Landing() {
                 BREACH AUTOPSY
               </h1>
 
-              <p className="font-body text-lg md:text-xl text-hero-muted max-w-lg mb-12 leading-relaxed uppercase">
+              <p className="font-mono  text-lg md:text-xl text-amber-50 max-w-lg mb-12 leading-relaxed uppercase">
                 The AI-powered forensic weapon. Feed it disk images and memory dumps.
                 Get a complete, precise attack timeline in under 5 minutes.
               </p>
@@ -194,7 +194,7 @@ export default function Landing() {
                 <span className="block font-mono text-xs tracking-[0.22em] text-text-muted group-hover:text-crimson transition-colors duration-300 mb-4">
                   {label}
                 </span>
-                <span className="block font-body text-xl tracking-wider font-bold uppercase text-text">
+                <span className="block font-display text-xl tracking-wider font-bold uppercase text-text">
                   {name}
                 </span>
               </div>
