@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  /* ── Crimson Brand Palette ── */
+  --color-crimson:       #95122C;
+  --color-crimson-dark:  #6b0d1f;
+  --color-crimson-deep:  #100C08;
+  --color-crimson-mid:   #3d0616;
+  --color-crimson-glow:  #95122c55;
+  --color-crimson-glow2: #95122c22;
+
+  /* ── Fixed hero colors (never override in .light — hero bg is always dark) ── */
+  --color-hero-text:     #edddd5;
+  --color-hero-muted:    #7a5858;
+
+  /* ── Dark Mode (default) ── */
+  --color-bg:         #100C08;
+  --color-bg-2:       #0d0a0a;
+  --color-bg-3:       #1c1010;
+  --color-bg-card:    #130e0e;
+
+  --color-text:       #edddd5;
+  --color-text-muted: #7a5a58;
+  --color-text-faint: #3d2a28;
+
+  --color-accent:      #95122C;
+  --color-accent-dark: #6b0d1f;
+  --color-accent-glow: #95122c40;
+
+  --color-border:      #2a1818;
+  --color-border-hot:  #95122c70;
+
+  /* ── Fonts ── */
+--font-display: 'Fascinate', 'Impact', sans-serif;
+  
+  --font-mono:    'Share Tech Mono', 'Courier New', monospace;
+  --font-body:    'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+
+/* ── Light Mode Overrides ── */
+.light {
+  --color-bg:         #fdf4f0;
+  --color-bg-2:       #f5e8e2;
+  --color-bg-3:       #eeddd5;
+  --color-bg-card:    #faf0ea;
+
+  --color-text:       #1a0808;
+  --color-text-muted: #7a3a35;
+  --color-text-faint: #c8a09a;
+
+  --color-border:     #e8d0c8;
+  --color-border-hot: #95122c50;
+
+  /* hero-text & hero-muted intentionally NOT overridden — hero bg is always dark */
+}
+
+@layer utilities {
+
+  /* ── Text glows ── */
+  .glow-crimson {
+    text-shadow: 0 0 30px #95122caa, 0 0 70px #95122c55, 0 0 120px #95122c22;
+  }
+  .glow-crimson-sm {
+    text-shadow: 0 0 16px #95122c80, 0 0 40px #95122c40;
+  }
+  .glow-hero-title {
+    text-shadow: 0 2px 40px #00000080;
+  }
+
+  /* ── Box glows ── */
+  .box-glow {
+    box-shadow: 0 0 30px #95122c30, 0 0 60px #95122c15;
+  }
+  .box-glow-hot {
+    box-shadow: 0 0 0 1px #95122c, 0 0 20px #95122c50, 0 0 60px #95122c20;
+  }
+  .shadow-navbar {
+    box-shadow: 0 4px 40px #95122c18;
+  }
+
+  /* ── Gradient backgrounds ── */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, #95122c22 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, #95122c15 0%, transparent 60%),
+      linear-gradient(160deg, #100C08 0%, #1c0c10 50%, #100C08 100%);
+  }
+  .cta-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, #95122c30 0%, transparent 70%),
+      linear-gradient(160deg, #100C08 0%, #1a0810 50%, #100C08 100%);
+  }
+  .bg-gradient-crimson {
+    background: linear-gradient(135deg, #95122C 0%, #6b0d1f 100%);
+  }
+
+  /* ── Grid overlay ── */
+  .grid-crimson {
+    background-image:
+      linear-gradient(#95122c 1px, transparent 1px),
+      linear-gradient(90deg, #95122c 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* ── Gradient text ── */
+  .text-gradient-hero {
+    background: linear-gradient(135deg, #95122C 0%, #c0394f 50%, #95122C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px #95122c70);
+  }
+  .text-gradient-section {
+    background: linear-gradient(135deg, #95122C, #c0394f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-cta {
+    background: linear-gradient(135deg, #95122C, #e05070, #95122C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 40px #95122c80);
+  }
+
+  /* ── Top accent line (pseudo via bg on a dedicated div) ── */
+  .line-gradient-crimson {
+    background: linear-gradient(90deg, transparent 0%, #95122C 40%, #95122C 60%, transparent 100%);
+  }
+  .line-gradient-center {
+    background: linear-gradient(90deg, transparent, #95122C, transparent);
+  }
+
+  /* ── Scanlines overlay ── */
+  .scanlines {
+    background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(149,18,44,0.025) 50%);
+    background-size: 100% 3px;
+  }
+
+  /* ── Card hover: bottom border sweep (via ::after) ── */
+  .card-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-sweep::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #95122C, transparent);
+    transition: width 0.5s ease;
+  }
+  .card-sweep:hover::after {
+    width: 100%;
+  }
+
+  /* ── Stack card: centered bottom sweep ── */
+  .card-sweep-center {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-sweep-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, transparent, #95122C, transparent);
+    transition: width 0.5s ease;
+  }
+  .card-sweep-center:hover::after {
+    width: 100%;
+  }
+
+  /* ── Agent card: top-right corner cut ── */
+  .corner-cut::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent #95122c transparent transparent;
+    opacity: 0.7;
+    transition: border-width 0.35s ease;
+  }
+  .corner-cut:hover::before {
+    border-width: 0 28px 28px 0;
+  }
+
+  /* ── Mix-blend for hero image ── */
+  .blend-luminosity {
+    mix-blend-mode: luminosity;
+  }
+
+  /* ── Navbar top crimson accent line ── */
+  .nav-accent-line {
+    background: linear-gradient(90deg, transparent 0%, #95122C 40%, #95122C 60%, transparent 100%);
+  }
+
+  /* ── CTA button ── */
+  .btn-cta {
+    background: linear-gradient(135deg, #95122C, #6b0d1f);
+    box-shadow: 0 0 40px #95122c40, inset 0 1px 0 #c0394f40;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .btn-cta:hover {
+    box-shadow: 0 0 70px #95122c80, inset 0 1px 0 #c0394f40;
+    transform: translateY(-2px);
+  }
+
+  /* ── Primary CTA button ── */
+  .btn-primary {
+    background: linear-gradient(135deg, #95122C, #6b0d1f);
+    box-shadow: 0 0 20px #95122c30;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #c0394f, #95122C);
+    box-shadow: 0 0 40px #95122c70, 0 8px 30px #95122c40;
+    transform: translateY(-2px);
+  }
+
+  /* ── Outline CTA button ── */
+  .btn-outline {
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: #95122c15;
+    box-shadow: 0 0 20px #95122c40, inset 0 0 20px #95122c10;
+    transform: translateY(-2px);
+  }
+
+  /* ── Navbar link underline sweep ── */
+  .nav-link-line {
+    position: relative;
+  }
+  .nav-link-line::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #95122C;
+    transition: width 0.3s ease;
+  }
+  .nav-link-line:hover::after {
+    width: 100%;
+  }
+
+  /* ── Pipeline card hot pulse ── */
+  .pipeline-hot {
+    background:
+      linear-gradient(135deg, #95122c18 0%, transparent 100%);
+    animation: hotPulse 3s ease-in-out infinite;
+  }
+  @keyframes hotPulse {
+    0%, 100% { box-shadow: 0 0 20px #95122c20; }
+    50%       { box-shadow: 0 0 40px #95122c40; }
+  }
+}
